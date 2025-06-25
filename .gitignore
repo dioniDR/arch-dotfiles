@@ -1,0 +1,129 @@
+# =============================================================================
+# .gitignore para repositorio de dotfiles de Arch Linux + Hyprland
+# =============================================================================
+
+# Archivos temporales y caché
+*.tmp
+*.temp
+*.bak
+*.backup
+*.backup.*
+*~
+.#*
+\#*#
+
+# Logs
+*.log
+logs/
+cache/
+
+# Archivos sensibles (NO incluir en el repo)
+.ssh/id_*
+.ssh/known_hosts
+.gnupg/private-keys-v1.d/
+.gnupg/random_seed
+.gnupg/trustdb.gpg
+.config/discord/Local\ Storage/
+.config/Code/User/globalStorage/
+.config/Code/User/workspaceStorage/
+.config/Code/logs/
+.config/Code/CachedExtensions/
+
+# Configuraciones específicas de hardware
+.config/hypr/monitors.conf
+.config/hypr/hardware-specific.conf
+
+# Archivos de estado y caché de aplicaciones
+.config/*/cache/
+.config/*/Cache/
+.config/*/logs/
+.config/*/tmp/
+.config/pulse/
+.config/dconf/
+.local/share/
+
+# Firefox (contiene datos sensibles)
+.config/firefox/*/sessionstore*
+.config/firefox/*/cookies.sqlite
+.config/firefox/*/formhistory.sqlite
+.config/firefox/*/places.sqlite
+
+# Archivos de desarrollo temporal
+node_modules/
+*.pyc
+__pycache__/
+.vscode/settings.json.bak
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de pacman específicos
+/etc/pacman.d/gnupg/
+/var/lib/pacman/
+
+# Backups automáticos
+*_backup_*
+backup_*/
+
+# Archivos de configuración que cambian frecuentemente
+.config/gtk-*/recently-used.xbel
+.config/user-dirs.dirs
+.config/mimeapps.list
+
+# Archivos de aplicaciones que se regeneran automáticamente
+.config/*/sessions/
+.config/*/session/
+
+# Directorios de wallpapers muy pesados (opcional)
+wallpapers/*.png
+wallpapers/*.jpg
+wallpapers/*.jpeg
+# Descomenta la línea anterior si tus wallpapers son muy pesados
+# y prefieres almacenarlos en otro lugar
+
+# Configuraciones específicas del usuario (incluir solo plantillas)
+shell/.zsh_history
+shell/.bash_history
+
+# Archivos de estado de aplicaciones
+.config/*/state
+.config/*/State
+
+# Archivos de git local
+.git/hooks/post-commit
+.git/hooks/pre-push
+
+# =============================================================================
+# Incluir explícitamente archivos importantes (sobrescribir exclusiones)
+# =============================================================================
+
+# Forzar inclusión de archivos de configuración importantes
+!.config/hypr/hyprland.conf
+!.config/waybar/config
+!.config/waybar/style.css
+!.config/kitty/kitty.conf
+!.config/rofi/config.rasi
+!.config/dunst/dunstrc
+
+# Incluir scripts importantes
+!scripts/*.sh
+!scripts/*.py
+
+# Incluir documentación
+!docs/
+!*.md
+!README*
+!INSTALL*
+!CHANGELOG*
+
+# Incluir configuraciones de shell (sin historial)
+!shell/.bashrc
+!shell/.zshrc
+!shell/.profile
+!shell/aliases.sh
+
+# Incluir listas de paquetes
+!packages/*.txt
+!packages/*.list

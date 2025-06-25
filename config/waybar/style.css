@@ -1,0 +1,142 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Symbols Nerd Font Mono", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(21, 18, 27, 0.95);
+    color: #cdd6f4;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+tooltip {
+    background: rgba(24, 24, 37, 0.95);
+    border: 1px solid rgba(181, 232, 224, 0.5);
+    border-radius: 10px;
+    color: #cdd6f4;
+}
+
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces button {
+    padding: 5px 9px;
+    margin: 3px 3px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #cdd6f4;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+    background: #89b4fa;
+    color: #11111b;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#window {
+    margin: 0 4px;
+    padding: 2px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    color: #f9e2af;
+}
+
+#clock {
+    background: #89b4fa;
+    color: #11111b;
+    border-radius: 10px;
+    padding: 2px 10px;
+    margin: 0 4px;
+    font-weight: bold;
+}
+
+#battery {
+    background: #a6e3a1;
+    color: #11111b;
+    border-radius: 10px;
+    padding: 2px 10px;
+    margin: 0 2px;
+}
+
+#battery.charging {
+    background: #f9e2af;
+}
+
+#battery.warning:not(.charging) {
+    background: #fab387;
+    color: #11111b;
+}
+
+#battery.critical:not(.charging) {
+    background: #f38ba8;
+    color: #11111b;
+}
+
+#network {
+    background: #89dceb;
+    color: #11111b;
+    border-radius: 10px;
+    padding: 2px 10px;
+    margin: 0 2px;
+}
+
+#network.disconnected {
+    background: #f38ba8;
+}
+
+#pulseaudio {
+    background: #f5c2e7;
+    color: #11111b;
+    border-radius: 10px;
+    padding: 2px 10px;
+    margin: 0 2px;
+}
+
+#pulseaudio.muted {
+    background: #6c7086;
+    color: #cdd6f4;
+}
+
+#bluetooth {
+    background: #cba6f7;
+    color: #11111b;
+    border-radius: 10px;
+    padding: 2px 10px;
+    margin: 0 2px;
+}
+
+#bluetooth.disabled {
+    background: #6c7086;
+    color: #cdd6f4;
+}
+
+#tray {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 2px 5px;
+    margin: 0 4px;
+}
+
+#custom-power {
+    color: #f38ba8;
+    background: rgba(243, 139, 168, 0.1);
+    border-radius: 10px;
+    padding: 2px 10px;
+    margin: 0 4px;
+    font-size: 16px;
+}
+
+#custom-power:hover {
+    background: #f38ba8;
+    color: #11111b;
+}

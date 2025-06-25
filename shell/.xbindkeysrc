@@ -1,0 +1,304 @@
+# For the benefit of emacs users: -*- shell-script -*-
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 1.8.7 - Configuración completa para Arch Linux
+# Usuario: dioni@archlinux
+# Hardware: ASUS VivoBook
+#
+# Para recargar configuración: killall xbindkeys && xbindkeys
+# Para debug: xbindkeys -k (luego presiona tecla para ver binding)
+# Para test: xbindkeys -n (verificar errores de sintaxis)
+
+###################################
+# CONTROL DE BRILLO DE PANTALLA  #
+###################################
+
+# MODO 1: Teclas F5/F6 normales (cuando Fn+Esc está desactivado)
+"brightnessctl set 10%-"
+    F5
+
+"brightnessctl set +10%"
+    F6
+
+# MODO 2: XF86 keys (cuando Fn+Esc está activado - modo función)
+"brightnessctl set 10%-"
+    XF86MonBrightnessDown
+
+"brightnessctl set +10%"
+    XF86MonBrightnessUp
+
+# MODO 3: Códigos directos por si acaso
+"brightnessctl set 10%-"
+    c:71
+
+"brightnessctl set +10%"
+    c:72
+
+# Shift+F5 = Brillo mínimo (ambos modos)
+"brightnessctl set 1"
+    shift + F5
+
+"brightnessctl set 1"
+    shift + XF86MonBrightnessDown
+
+# Shift+F6 = Brillo máximo (ambos modos)
+"brightnessctl set 255"
+    shift + F6
+
+"brightnessctl set 255"
+    shift + XF86MonBrightnessUp
+
+# Ctrl+F5 = Brillo 25% (ambos modos)
+"brightnessctl set 25%"
+    control + F5
+
+"brightnessctl set 25%"
+    control + XF86MonBrightnessDown
+
+# Ctrl+F6 = Brillo 75% (ambos modos)
+"brightnessctl set 75%"
+    control + F6
+
+"brightnessctl set 75%"
+    control + XF86MonBrightnessUp
+
+###################################
+# CONTROL DE TECLADO BACKLIGHT   #
+###################################
+
+# F4 = Toggle keyboard backlight (modo normal)
+"if [ $(cat /sys/class/leds/asus::kbd_backlight/brightness 2>/dev/null || echo 0) -eq 0 ]; then echo 2 | sudo tee /sys/class/leds/asus::kbd_backlight/brightness > /dev/null; else echo 0 | sudo tee /sys/class/leds/asus::kbd_backlight/brightness > /dev/null; fi"
+    F4
+
+# F4 = Toggle keyboard backlight (modo función)
+"if [ $(cat /sys/class/leds/asus::kbd_backlight/brightness 2>/dev/null || echo 0) -eq 0 ]; then echo 2 | sudo tee /sys/class/leds/asus::kbd_backlight/brightness > /dev/null; else echo 0 | sudo tee /sys/class/leds/asus::kbd_backlight/brightness > /dev/null; fi"
+    XF86KbdBrightnessDown
+
+# Backup para F4 con código directo
+"if [ $(cat /sys/class/leds/asus::kbd_backlight/brightness 2>/dev/null || echo 0) -eq 0 ]; then echo 2 | sudo tee /sys/class/leds/asus::kbd_backlight/brightness > /dev/null; else echo 0 | sudo tee /sys/class/leds/asus::kbd_backlight/brightness > /dev/null; fi"
+    c:70
+
+# Ctrl+F4 = Keyboard backlight máximo (ambos modos)
+"echo 3 | sudo tee /sys/class/leds/asus::kbd_backlight/brightness > /dev/null 2>&1"
+    control + F4
+
+"echo 3 | sudo tee /sys/class/leds/asus::kbd_backlight/brightness > /dev/null 2>&1"
+    control + XF86KbdBrightnessDown
+
+###################################
+# CONTROL DE AUDIO               #
+###################################
+
+# F10 = Mute/Unmute
+"amixer set Master toggle"
+    F10
+
+# F11 = Bajar volumen
+"amixer set Master 5%-"
+    F11
+
+# F12 = Subir volumen  
+"amixer set Master 5%+"
+    F12
+
+# Ctrl+F10 = Mute micrófono
+"amixer set Capture toggle"
+    control + F10
+
+###################################
+# SISTEMA Y SEGURIDAD            #
+###################################
+
+# Ctrl+Alt+L = Lock screen
+"i3lock -c 000000"
+    control + alt + l
+
+# Ctrl+Alt+S = Suspend
+"systemctl suspend"
+    control + alt + s
+
+# Ctrl+Shift+Escape = Task Manager (btop)
+"warp-terminal -e btop"
+    control + shift + Escape
+
+# Super+L = Lock screen alternativo
+"betterlockscreen -l || i3lock -c 000000"
+    Mod4 + l
+
+###################################
+# APLICACIONES RÁPIDAS           #
+###################################
+
+# Ctrl+Alt+T = Terminal
+"warp-terminal"
+    control + alt + t
+
+# Ctrl+Alt+F = File Manager
+"nautilus || thunar || pcmanfm"
+    control + alt + f
+
+# Ctrl+Shift+C = VS Code
+"code"
+    control + shift + c
+
+# Ctrl+Shift+F = Firefox
+"firefox"
+    control + shift + f
+
+# Super+Space = App Launcher (rofi/dmenu)
+"rofi -show drun || dmenu_run"
+    Mod4 + space
+
+# Super+Tab = Window switcher
+"rofi -show window"
+    Mod4 + Tab
+
+###################################
+# CAPTURAS DE PANTALLA           #
+###################################
+
+# Print = Captura completa
+"gnome-screenshot || scrot || import -window root ~/captura-$(date +%Y%m%d_%H%M%S).png"
+    Print
+
+# Shift+Print = Captura de área seleccionada
+"gnome-screenshot -a || scrot -s || import ~/captura-area-$(date +%Y%m%d_%H%M%S).png"
+    shift + Print
+
+# Ctrl+Print = Captura ventana activa
+"gnome-screenshot -w || scrot -u || import -window $(xdotool getactivewindow) ~/captura-ventana-$(date +%Y%m%d_%H%M%S).png"
+    control + Print
+
+###################################
+# DESARROLLO Y PRODUCTIVIDAD     #
+###################################
+
+# F9 = Calculadora
+"gnome-calculator || kcalc || qalculate-gtk"
+    F9
+
+# Ctrl+Shift+T = htop en terminal
+"warp-terminal -e htop"
+    control + shift + t
+
+# Super+E = Editor de texto
+"gedit || kate || mousepad"
+    Mod4 + e
+
+# Super+W = Navegador web
+"firefox"
+    Mod4 + w
+
+###################################
+# CONECTIVIDAD                   #
+###################################
+
+# Ctrl+Shift+B = Toggle Bluetooth
+"if systemctl is-active --quiet bluetooth; then sudo systemctl stop bluetooth; notify-send 'Bluetooth OFF'; else sudo systemctl start bluetooth; notify-send 'Bluetooth ON'; fi"
+    control + shift + b
+
+# Ctrl+Shift+W = WiFi info
+"nmcli dev wifi && notify-send 'WiFi Status' \"$(nmcli dev status | grep wifi)\""
+    control + shift + w
+
+# F8 = Toggle WiFi (si está configurado en BIOS)
+"nmcli radio wifi"
+    F8
+
+###################################
+# MULTIMEDIA                     #
+###################################
+
+# Ctrl+Shift+M = Abrir control de sonido
+"pavucontrol"
+    control + shift + m
+
+# Super+M = Reproductor de música
+"rhythmbox || audacious || vlc"
+    Mod4 + m
+
+# Super+V = Reproductor de video
+"vlc || mpv"
+    Mod4 + v
+
+###################################
+# SYSTEM MONITORING              #
+###################################
+
+# Ctrl+Shift+S = System info
+"notify-send 'System Info' \"CPU: $(cat /proc/loadavg | cut -d' ' -f1-3)\\nRAM: $(free -h | grep Mem | awk '{print $3\"/\"$2}')\\nDisk: $(df -h / | tail -1 | awk '{print $3\"/\"$2\" (\"$5\" used)\"}')\""
+    control + shift + s
+
+# Ctrl+Shift+N = Network info
+"notify-send 'Network Info' \"$(ip route get 1.1.1.1 | head -1 | cut -d' ' -f7) - $(curl -s ifconfig.me)\""
+    control + shift + n
+
+# Super+I = Hardware info
+"warp-terminal -e 'lscpu && echo && lsmem && echo && lspci | grep -i vga && read'"
+    Mod4 + i
+
+###################################
+# WORKSPACES (si usas i3/awesome) #
+###################################
+
+# Super+Left = Workspace anterior
+"i3-msg workspace prev || awesome-client 'awful.tag.viewprev()'"
+    Mod4 + Left
+
+# Super+Right = Workspace siguiente  
+"i3-msg workspace next || awesome-client 'awful.tag.viewnext()'"
+    Mod4 + Right
+
+# Super+Shift+Q = Cerrar ventana
+"i3-msg kill || xdotool getactivewindow windowkill"
+    Mod4 + shift + q
+
+###################################
+# UTILIDADES ARCH ESPECÍFICAS    #
+###################################
+
+# Ctrl+Shift+U = Update system
+"warp-terminal -e 'sudo pacman -Syu && read'"
+    control + shift + u
+
+# Ctrl+Shift+P = Package search
+"warp-terminal -e 'pacman -Ss'"
+    control + shift + p
+
+# Super+P = Power menu
+"echo -e 'Suspend\\nReboot\\nShutdown' | rofi -dmenu -p 'Power:' | while read choice; do case $choice in Suspend) systemctl suspend;; Reboot) systemctl reboot;; Shutdown) systemctl poweroff;; esac; done"
+    Mod4 + p
+
+###################################
+# DEBUGGING Y MANTENIMIENTO      #
+###################################
+
+# Ctrl+Alt+R = Restart xbindkeys
+"killall xbindkeys && sleep 1 && xbindkeys && notify-send 'xbindkeys restarted'"
+    control + alt + r
+
+# Ctrl+Alt+D = Show xbindkeys debug
+"xbindkeys -k"
+    control + alt + d
+
+# Super+F1 = Ayuda (mostrar shortcuts principales)
+"notify-send 'Shortcuts Principales' 'F5/F6: Brillo\\nF4: Keyboard backlight\\nCtrl+Alt+L: Lock\\nCtrl+Alt+T: Terminal\\nSuper+Space: Apps\\nCtrl+Shift+Esc: Task Manager'"
+    Mod4 + F1
+
+###################################
+# EMERGENCY SHORTCUTS            #
+###################################
+
+# Ctrl+Alt+F4 = Kill X server (emergency)
+"sudo pkill X"
+    control + alt + F4
+
+# Ctrl+Alt+Shift+R = Restart desktop environment
+"if pgrep i3; then i3-msg restart; elif pgrep awesome; then awesome-client 'awesome.restart()'; else notify-send 'No DE detected'; fi"
+    control + alt + shift + r
+
+##################################
+# End of xbindkeys configuration #
+##################################
