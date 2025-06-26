@@ -13,8 +13,8 @@
 
 ## 📊 Estadísticas
 
-- **Paquetes oficiales**: 106
-- **Paquetes AUR**: 6
+- **Paquetes oficiales**: 108
+- **Paquetes AUR**: 7
 - **Configuraciones**: Hyprland, Waybar, Wofi, Mako, VS Code
 
 ## 🚀 Instalación Rápida

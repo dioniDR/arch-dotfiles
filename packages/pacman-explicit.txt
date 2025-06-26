@@ -12,6 +12,7 @@ evtest 1.35-2
 firefox 139.0.4-1
 gdm 48.0-2
 git 2.50.0-1
+github-cli 2.74.2-1
 gnome-backgrounds 48.2.1-1
 gnome-calculator 48.1-2
 gnome-calendar 48.1-1
@@ -60,6 +61,7 @@ hyprlock 0.8.2-1
 hyprpaper 0.7.5-1
 i3lock 2.15-2
 kitty 0.42.1-1
+libinput-gestures 2.80-1
 linux 6.15.3.arch1-1
 linux-firmware 20250613.12fe085f-6
 loupe 48.1-1
