@@ -127,3 +127,24 @@ shell/.bash_history
 # Incluir listas de paquetes
 !packages/*.txt
 !packages/*.list
+
+# =============================================================================
+# Outputs temporales y análisis (NO versionar)
+# =============================================================================
+out/
+*.tmp
+*.backup.*
+*_backup_*
+
+# Documentación específica de hardware/sistema
+docs/hardware/system-specific-*
+docs/hardware/serial-numbers*
+
+# Reportes temporales
+docs/reports/temp-*
+
+# Análisis del sistema local
+out/analysis/*
+out/comparisons/*
+out/reports/*
+out/backups/*

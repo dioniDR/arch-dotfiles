@@ -140,3 +140,27 @@ tooltip {
     background: #f38ba8;
     color: #11111b;
 }
+
+#cpu {
+    background: #a6e3a1;
+    color: #11111b;
+    border-radius: 10px;
+    padding: 2px 10px;
+    margin: 0 2px;
+}
+
+#memory {
+    background: #89dceb;
+    color: #11111b;
+    border-radius: 10px;
+    padding: 2px 10px;
+    margin: 0 2px;
+}
+
+#disk {
+    background: #f9e2af;
+    color: #11111b;
+    border-radius: 10px;
+    padding: 2px 10px;
+    margin: 0 2px;
+}
