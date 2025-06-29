@@ -1,0 +1,39 @@
+# =============================================================================
+# CONFIGURACIÓN PULSEAUDIO PARA AMD RYZEN AI 9 365
+# PulseAudio sobre PipeWire optimizado para desarrollo
+# =============================================================================
+
+# Cargar módulos básicos del sistema
+.include /etc/pulse/system.pa
+
+# Configuración específica para AMD Radeon 880M Audio
+load-module module-alsa-sink device=hw:0,0 sink_name=alsa_output.main
+load-module module-alsa-source device=hw:0,0 source_name=alsa_input.main
+
+# Módulo de detección automática (mantener para compatibilidad)
+load-module module-udev-detect
+
+# Configuración de volumen y mezclado
+load-module module-default-device-restore
+load-module module-rescue-streams
+load-module module-always-sink
+load-module module-intended-roles
+
+# Configuración para desarrollo (loopback y monitor)
+load-module module-loopback source=alsa_input.main sink=alsa_output.main latency_msec=5
+
+# Configuración de red para desarrollo remoto
+load-module module-native-protocol-unix
+load-module module-native-protocol-tcp auth-anonymous=1
+
+# Configuración de sesión
+load-module module-console-kit
+load-module module-systemd-login
+
+# Configuración por defecto
+set-default-sink alsa_output.main
+set-default-source alsa_input.main
+
+# Configuración de volumen inicial
+set-sink-volume alsa_output.main 0x10000
+set-source-volume alsa_input.main 0x10000

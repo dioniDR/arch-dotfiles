@@ -1,189 +1,110 @@
-# 🏗️ Arch Linux + Hyprland Dotfiles
+# 🏠 Arch Linux + Hyprland Dotfiles
+*Generado automáticamente el 29/06/2025 08:21*
 
-> **Configuraciones personalizadas para Arch Linux con Hyprland, Waybar y herramientas modernas**
+## 🖥️ Hardware Detectado
 
-## 📋 Descripción
+- **CPU**: AMD Ryzen AI 9 365 w/ Radeon 880M (20 cores)
+- **RAM**: 22Gi
+- **GPU**: 
+- **Kernel**: Linux 6.15.4-arch2-1
+- **Uptime**: 30 minutes
 
-Este repositorio contiene mi configuración completa de Arch Linux con Hyprland, exportada automáticamente desde mi sistema en funcionamiento. Incluye todos los dotfiles, scripts de instalación y herramientas necesarias para replicar mi setup en una nueva instalación.
+## 🚀 Estado del Sistema
+
+| Componente | Estado |
+|------------|--------|
+| Hyprland | ✅ Activo |
+| Waybar | ✅ Activo |
+| Audio | ✅ PulseAudio |
+| **Completitud** | **85%** |
+
+## 📊 Estadísticas Dinámicas
+
+- **Paquetes oficiales**: 110
+- **Paquetes AUR**: 8
+- **Extensiones VS Code**: 3
+- **Configuraciones**: 26 directorios en ~/.config
+- **Tamaño total**: 1.2M
+
+## 🔧 Stack Tecnológico
+
+### Core System
+- **OS**: Arch Linux
+- **WM**: Hyprland (Wayland)
+- **Bar**: Waybar con módulos de rendimiento
+- **Launcher**: Wofi (blur + transparencias)
+- **Notifications**: Mako
+- **Audio**: PulseAudio
+
+### Development Tools
+- **Terminal**: Kitty + Warp Terminal
+- **Editor**: VS Code con extensiones
+- **AI**: Claude Code CLI
+- **Git**: GitHub CLI integrado
+- **Shell**: Bash optimizado
 
 ## 🚀 Instalación Rápida
 
-### Para una instalación nueva de Arch Linux:
-
 ```bash
-# 1. Después de la instalación base de Arch
-git clone https://github.com/dioniDR/arch-dotfiles.git
-cd arch-dotfiles
-
-# 2. Instalar dependencias básicas
-./scripts/bootstrap.sh
-
-# 3. Instalación completa automática
+git clone [tu-repo] ~/.dotfiles
+cd ~/.dotfiles
 ./scripts/install.sh
 ```
 
-## 📁 Estructura del Repositorio
+## 📁 Estructura del Proyecto
 
 ```
 arch-dotfiles/
-├── config/                 # Configuraciones de aplicaciones
-│   ├── hypr/              # Hyprland WM
-│   ├── waybar/            # Barra de estado
-│   ├── wofi/              # Launcher
-│   ├── kitty/             # Terminal
-│   └── ...
-├── packages/              # Listas de paquetes instalados
-│   ├── pacman-packages.txt
-│   ├── aur-packages.txt
-│   └── package-counts.txt
-├── scripts/               # Scripts de automatización
-│   ├── bootstrap.sh       # Preparar dependencias
-│   ├── install.sh         # Instalación completa
-│   ├── export-personal.sh # Exportar configuraciones
-│   └── dotfiles-manager.sh # Gestión de dotfiles
-├── shell/                 # Dotfiles del home
-├── system/                # Configuraciones de sistema
-└── wallpapers/           # Fondos de pantalla
+├── config/
+│   ├── hypr/           # Hyprland + scripts
+│   ├── waybar/         # Barra con CPU/RAM/Disco
+│   ├── wofi/           # Launcher moderno
+│   ├── warp-terminal/  # Configuración Warp
+│   └── [otros]/        # Mako, Kitty, VS Code...
+├── packages/           # Listas de paquetes
+├── scripts/            # Automatización
+├── .help-system/       # Sistema F1
+└── shell/              # Dotfiles bash
 ```
 
-## 🔄 Flujo de Trabajo
+## ⚡ Características Avanzadas
 
-### Para actualizar configuraciones existentes:
+### Sistema de Ayuda F1
+- Presiona **F1** en cualquier momento
+- Ayuda HTML dinámica en navegador
+- Contexto específico por aplicación
+
+### Navegación Inteligente
+```bash
+./nav.sh ?           # Orientación del proyecto
+./nav.sh config      # Ir a configuraciones
+./nav.sh scripts     # Ver scripts disponibles
+```
+
+### Micro-Prompts Claude
+- Archivo `.claude-prompts.md` con comandos copy-paste
+- Optimizado para desarrollo con IA
+- Contexto completo del proyecto
+
+## 🔧 Hardware Optimizado Para
+
+✅ **AMD Ryzen AI 9 365** (20 cores)  
+✅ **Radeon 880M** integrada  
+✅ **23GB RAM** disponible  
+✅ **Wayland nativo** (sin X11)  
+
+## 📋 Comandos Útiles
 
 ```bash
-# 1. Modificar archivos en ~/.config/
-nano ~/.config/hypr/hyprland.conf
-
-# 2. Probar que funcionen correctamente
-# Recargar Hyprland: Super + Shift + R
-
-# 3. Sincronizar cambios al repositorio
-cd ~/arch-dotfiles
+# Exportar configuración actual
 ./scripts/export-personal.sh
 
-# 4. Versionar cambios
-git add .
-git commit -m "✨ Update Hyprland gestures configuration"
-git push
+# Aplicar cambios al sistema
+./scripts/apply-configs.sh
+
+# Ver estado del sistema
+systemctl --user status
 ```
-
-### Para instalar nuevos paquetes:
-
-```bash
-# 1. Instalar normalmente
-yay -S nuevo-paquete
-
-# 2. Actualizar listas en el repo
-cd ~/arch-dotfiles
-./scripts/export-personal.sh
-
-# 3. Versionar cambios
-git add packages/
-git commit -m "📦 Add nuevo-paquete"
-git push
-```
-
-### Para aplicar configuraciones del repo al sistema:
-
-```bash
-# Copiar configs del repo a ~/.config/
-cp -r ~/arch-dotfiles/config/* ~/.config/
-
-# O usar el script de instalación completa
-./scripts/install.sh
-```
-
-## 🛠️ Scripts Principales
-
-### `bootstrap.sh`
-Prepara las dependencias básicas necesarias después de una instalación limpia de Arch:
-- Instala herramientas de compilación (base-devel, git)
-- Configura NetworkManager
-- Instala yay (AUR helper)
-- Prepara base de Wayland
-
-### `install.sh`
-Instalación completa automatizada:
-- Instala todos los paquetes listados
-- Copia configuraciones a sus ubicaciones
-- Configura servicios del sistema
-- Aplica temas y fuentes
-
-### `export-personal.sh`
-Exporta configuraciones actuales del sistema al repositorio:
-- Copia configs de ~/.config/
-- Actualiza listas de paquetes instalados
-- Genera estadísticas del sistema
-- Mantiene el repo sincronizado
-
-### `dotfiles-manager.sh`
-Herramientas avanzadas de gestión:
-- Backup y restauración
-- Comparación de configuraciones
-- Validación de archivos
-- Gestión de symlinks (opcional)
-
-## 🖥️ Características del Setup
-
-- **WM**: Hyprland (Wayland compositor)
-- **Bar**: Waybar con módulos personalizados
-- **Launcher**: Wofi
-- **Terminal**: Kitty
-- **Editor**: VS Code / Neovim
-- **Gestos**: Configuración avanzada de touchpad
-- **Temas**: GTK3 personalizado
-- **Audio**: Pipewire/Pulse
-
-## 📦 Paquetes Incluidos
-
-El repositorio incluye listas automáticamente actualizadas de:
-- **Pacman packages**: Paquetes oficiales de Arch
-- **AUR packages**: Paquetes del Arch User Repository
-- **Dependencias**: Librerías y herramientas del sistema
-
-Ver archivos en `packages/` para listas completas.
-
-## ⚠️ Notas Importantes
-
-### Configuraciones como Copias
-Las configuraciones están almacenadas como **copias** de las originales, no como symlinks:
-- `~/.config/hypr/` → Configuraciones ACTIVAS (las que usa Hyprland)
-- `~/arch-dotfiles/config/hypr/` → BACKUP/REPO (sincronizado manualmente)
-
-### Sincronización Manual
-Los cambios no se reflejan automáticamente en el repo. Debes ejecutar `export-personal.sh` después de modificar configuraciones.
-
-### Dependencias del Sistema
-Algunos componentes requieren configuraciones específicas del sistema que se aplican durante la instalación con `install.sh`.
-
-## 🔧 Personalización
-
-Para adaptar este repo a tu sistema:
-
-1. **Forkea** este repositorio
-2. **Clona** tu fork localmente  
-3. **Ejecuta** `./scripts/export-personal.sh` para capturar tus configuraciones
-4. **Modifica** las configuraciones según tus preferencias
-5. **Versiona** y mantén actualizado tu fork
-
-## 📚 Documentación Adicional
-
-- [Instalación de Arch Linux](https://wiki.archlinux.org/title/Installation_guide)
-- [Hyprland Documentation](https://hyprland.org/)
-- [Waybar Configuration](https://github.com/Alexays/Waybar/wiki)
-
-## 🤝 Contribuciones
-
-Si encuentras mejoras o fixes:
-1. Abre un **Issue** para discutir cambios
-2. Crea un **Pull Request** con tus mejoras
-3. Asegúrate de que los scripts funcionen correctamente
-
-## 📄 Licencia
-
-Este repositorio está disponible bajo licencia MIT. Siéntete libre de usar, modificar y distribuir según tus necesidades.
 
 ---
-
-**Generado automáticamente por el script `export-personal.sh`**  
-*Última actualización: $(date)*
+**Completitud: 85%** | *Sistema productivo para desarrollo diario*

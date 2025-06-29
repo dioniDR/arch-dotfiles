@@ -113,10 +113,16 @@ export_other_configs() {
         print_info "✅ VS Code exportado"
     fi
     
-    # Pulse Audio
+    # PulseAudio + PipeWire (optimizado para AMD Ryzen AI 9 365)
     if [[ -d "$HOME/.config/pulse" ]]; then
-        cp "$HOME/.config/pulse/default.pa" "$DOTFILES_DIR/config/pulse/" 2>/dev/null || true
-        print_info "✅ PulseAudio exportado"
+        cp -r "$HOME/.config/pulse"/* "$DOTFILES_DIR/config/pulse/" 2>/dev/null || true
+        print_info "✅ PulseAudio exportado (AMD optimizado)"
+    fi
+    
+    # PipeWire (configuración de baja latencia)
+    if [[ -d "$HOME/.config/pipewire" ]]; then
+        cp -r "$HOME/.config/pipewire"/* "$DOTFILES_DIR/config/pipewire/" 2>/dev/null || true
+        print_info "✅ PipeWire exportado (baja latencia)"
     fi
 }
 
@@ -153,29 +159,103 @@ export_packages() {
     fi
 }
 
+# Obtener información del sistema
+get_system_info() {
+    # Hardware dinámico
+    CPU_MODEL=$(lscpu | grep "Model name:" | sed 's/Model name:[[:space:]]*//')
+    CPU_CORES=$(nproc)
+    RAM_TOTAL=$(free -h | awk '/^Mem:/ {print $2}')
+    GPU_INFO=$(lspci | grep -i vga | sed 's/.*: //')
+    KERNEL_VER=$(uname -r)
+    UPTIME=$(uptime -p | sed 's/up //')
+    
+    # Estado del sistema
+    HYPR_STATUS=$(pgrep Hyprland >/dev/null && echo "✅ Activo" || echo "❌ Inactivo")
+    WAYBAR_STATUS=$(pgrep waybar >/dev/null && echo "✅ Activo" || echo "❌ Inactivo")
+    AUDIO_STATUS=$(pactl info >/dev/null 2>&1 && echo "✅ PulseAudio" || echo "❌ Sin audio")
+    
+    # Contadores de archivos
+    CONFIG_COUNT=$(find "$HOME/.config" -maxdepth 1 -type d 2>/dev/null | wc -l)
+    DOTFILES_SIZE=$(du -sh "$DOTFILES_DIR" 2>/dev/null | cut -f1 || echo "0B")
+}
+
+# Calcular porcentaje de completitud
+calculate_completion() {
+    local total_score=0
+    local max_score=100
+    
+    # Configuraciones principales (40 puntos)
+    [[ -f "$HOME/.config/hypr/hyprland.conf" ]] && ((total_score += 15))
+    [[ -f "$HOME/.config/waybar/config.jsonc" ]] && ((total_score += 10))
+    [[ -d "$HOME/.config/wofi" ]] && ((total_score += 8))
+    [[ -d "$HOME/.config/mako" ]] && ((total_score += 7))
+    
+    # Herramientas de desarrollo (30 puntos)
+    command -v code >/dev/null && ((total_score += 10))
+    command -v gh >/dev/null && ((total_score += 5))
+    command -v claude-code >/dev/null && ((total_score += 15))
+    
+    # Sistema completo (30 puntos)
+    pgrep Hyprland >/dev/null && ((total_score += 15))
+    pgrep waybar >/dev/null && ((total_score += 10))
+    pactl info >/dev/null 2>&1 && ((total_score += 5))
+    
+    echo $((total_score))
+}
+
 # Crear README personalizado
 create_readme() {
     print_step "Creando documentación..."
     
+    # Obtener información dinámica
+    get_system_info
+    local completion_pct=$(calculate_completion)
+    
     cat > "$DOTFILES_DIR/README.md" << EOF
 # 🏠 Arch Linux + Hyprland Dotfiles
+*Generado automáticamente el $(date '+%d/%m/%Y %H:%M')*
 
-## 🖥️ Mi Setup
+## 🖥️ Hardware Detectado
 
-- **OS**: Arch Linux (Kernel 6.15.3-arch1-1)
-- **WM**: Hyprland
-- **Bar**: Waybar
-- **Terminal**: Kitty + Warp Terminal
-- **Launcher**: Wofi
-- **Notifications**: Mako
-- **Shell**: Bash
-- **Editor**: VS Code
+- **CPU**: $CPU_MODEL ($CPU_CORES cores)
+- **RAM**: $RAM_TOTAL
+- **GPU**: $GPU_INFO
+- **Kernel**: Linux $KERNEL_VER
+- **Uptime**: $UPTIME
 
-## 📊 Estadísticas
+## 🚀 Estado del Sistema
+
+| Componente | Estado |
+|------------|--------|
+| Hyprland | $HYPR_STATUS |
+| Waybar | $WAYBAR_STATUS |
+| Audio | $AUDIO_STATUS |
+| **Completitud** | **${completion_pct}%** |
+
+## 📊 Estadísticas Dinámicas
 
 - **Paquetes oficiales**: $(wc -l < "$DOTFILES_DIR/packages/pacman-explicit.txt" 2>/dev/null || echo "?")
 - **Paquetes AUR**: $(wc -l < "$DOTFILES_DIR/packages/aur-packages.txt" 2>/dev/null || echo "?")
-- **Configuraciones**: Hyprland, Waybar, Wofi, Mako, VS Code
+- **Extensiones VS Code**: $(wc -l < "$DOTFILES_DIR/packages/vscode-extensions.txt" 2>/dev/null || echo "?")
+- **Configuraciones**: $CONFIG_COUNT directorios en ~/.config
+- **Tamaño total**: $DOTFILES_SIZE
+
+## 🔧 Stack Tecnológico
+
+### Core System
+- **OS**: Arch Linux
+- **WM**: Hyprland (Wayland)
+- **Bar**: Waybar con módulos de rendimiento
+- **Launcher**: Wofi (blur + transparencias)
+- **Notifications**: Mako
+- **Audio**: PulseAudio
+
+### Development Tools
+- **Terminal**: Kitty + Warp Terminal
+- **Editor**: VS Code con extensiones
+- **AI**: Claude Code CLI
+- **Git**: GitHub CLI integrado
+- **Shell**: Bash optimizado
 
 ## 🚀 Instalación Rápida
 
@@ -185,35 +265,66 @@ cd ~/.dotfiles
 ./scripts/install.sh
 \`\`\`
 
-## 📁 Estructura
+## 📁 Estructura del Proyecto
 
-- \`config/hypr/\` - Configuración principal de Hyprland + scripts
-- \`config/waybar/\` - Barra de estado personalizada
-- \`shell/\` - Configuración de Bash + atajos
-- \`packages/\` - Listas de paquetes para reinstalación
-- \`scripts/\` - Scripts de automatización
+\`\`\`
+arch-dotfiles/
+├── config/
+│   ├── hypr/           # Hyprland + scripts
+│   ├── waybar/         # Barra con CPU/RAM/Disco
+│   ├── wofi/           # Launcher moderno
+│   ├── warp-terminal/  # Configuración Warp
+│   └── [otros]/        # Mako, Kitty, VS Code...
+├── packages/           # Listas de paquetes
+├── scripts/            # Automatización
+├── .help-system/       # Sistema F1
+└── shell/              # Dotfiles bash
+\`\`\`
 
-## 🔧 Configuraciones Importantes
+## ⚡ Características Avanzadas
 
-### Hyprland
-- Configuración principal en \`config/hypr/hyprland.conf\`
-- Scripts personalizados en \`scripts/hypr-scripts/\`
-- Configuración de idle, lock y wallpapers
+### Sistema de Ayuda F1
+- Presiona **F1** en cualquier momento
+- Ayuda HTML dinámica en navegador
+- Contexto específico por aplicación
 
-### Waybar
-- Config JSON en \`config/waybar/config.jsonc\`
-- Estilos CSS en \`config/waybar/style.css\`
+### Navegación Inteligente
+\`\`\`bash
+./nav.sh ?           # Orientación del proyecto
+./nav.sh config      # Ir a configuraciones
+./nav.sh scripts     # Ver scripts disponibles
+\`\`\`
 
-### Aplicaciones Clave
-- **Claude Code**: CLI de IA para desarrollo
-- **Warp Terminal**: Terminal moderna
-- **VS Code**: Editor principal con extensiones
+### Micro-Prompts Claude
+- Archivo \`.claude-prompts.md\` con comandos copy-paste
+- Optimizado para desarrollo con IA
+- Contexto completo del proyecto
+
+## 🔧 Hardware Optimizado Para
+
+✅ **AMD Ryzen AI 9 365** (20 cores)  
+✅ **Radeon 880M** integrada  
+✅ **23GB RAM** disponible  
+✅ **Wayland nativo** (sin X11)  
+
+## 📋 Comandos Útiles
+
+\`\`\`bash
+# Exportar configuración actual
+./scripts/export-personal.sh
+
+# Aplicar cambios al sistema
+./scripts/apply-configs.sh
+
+# Ver estado del sistema
+systemctl --user status
+\`\`\`
 
 ---
-*Generado automáticamente desde mi setup actual*
+**Completitud: ${completion_pct}%** | *Sistema productivo para desarrollo diario*
 EOF
 
-    print_info "✅ README creado"
+    print_info "✅ README dinámico creado (${completion_pct}% completitud)"
 }
 
 # Función principal
