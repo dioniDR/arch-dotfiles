@@ -73,3 +73,20 @@ case "${1:-?}" in
         echo "  help     Esta ayuda"
         ;;
 esac
+# Claude Optimization Functions
+claude-optimize() {
+    echo "🔥 Claude Optimization System"
+    echo "============================"
+    echo "activate  - Activar optimización"
+    echo "cache     - Regenerar cache"
+    echo "status    - Ver estado"
+    echo "help      - Mostrar ayuda"
+    
+    case "$1" in
+        "activate") ./.claude-optimization/scripts/activate-optimization.sh ;;
+        "cache") ./.claude-optimization/scripts/generate-context-cache.sh ;;
+        "status") ./.claude-optimization/scripts/status.sh ;;
+        "help") ./.claude-optimization/scripts/help.sh ;;
+        *) echo "💡 Uso: claude-optimize [activate|cache|status|help]" ;;
+    esac
+}

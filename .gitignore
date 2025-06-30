@@ -148,3 +148,5 @@ out/analysis/*
 out/comparisons/*
 out/reports/*
 out/backups/*
+.claude-optimization/cache/temp*
+.claude-optimization/profiles/current*
