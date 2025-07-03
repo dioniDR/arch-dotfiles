@@ -78,6 +78,8 @@ npm 11.4.2-1
 orca 48.6-1
 pamixer 1.6-3
 polkit-gnome 0.105-11
+python-flask 3.1.1-1
+python-markdown 3.8.2-1
 rygel 1:0.44.2-3
 simple-scan 48.1-1
 slock 1.5-3
@@ -91,6 +93,7 @@ swaylock 1.8.2-1
 tecla 48.0.2-1
 thunar 4.20.3-1
 totem 43.2-1
+tree 2.2.1-1
 ttf-nerd-fonts-symbols-mono 3.4.0-1
 udiskie 2.5.7-1
 visual-studio-code-bin 1.101.1-1
