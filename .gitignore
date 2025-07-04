@@ -150,3 +150,41 @@ out/reports/*
 out/backups/*
 .claude-optimization/cache/temp*
 .claude-optimization/profiles/current*
+
+# =============================================================================
+# Ollama-lab specific rules
+# =============================================================================
+
+# Ollama-lab Python environment
+apps/ollama-lab/venv/
+apps/ollama-lab/env/
+apps/ollama-lab/ENV/
+apps/ollama-lab/env.bak/
+apps/ollama-lab/venv.bak/
+
+# Ollama-lab application data
+apps/ollama-lab/config.json
+apps/ollama-lab/saved_prompts.json
+apps/ollama-lab/*.backup
+
+# Ollama-lab runtime
+apps/ollama-lab/pids
+apps/ollama-lab/*.pid
+apps/ollama-lab/*.seed
+apps/ollama-lab/*.pid.lock
+
+# Ollama-lab coverage
+apps/ollama-lab/coverage/
+apps/ollama-lab/*.lcov
+apps/ollama-lab/.nyc_output
+
+# Jupyter (if used in ollama-lab)
+apps/ollama-lab/.ipynb_checkpoints
+apps/ollama-lab/profile_default/
+apps/ollama-lab/ipython_config.py
+
+# Type checking
+apps/ollama-lab/.mypy_cache/
+apps/ollama-lab/.dmypy.json
+apps/ollama-lab/dmypy.json
+apps/ollama-lab/.pyre/
