@@ -1,0 +1,64 @@
+# ========================================
+# HERRAMIENTAS DEL SISTEMA
+# No críticas para desktop - Actualizables libremente
+# ========================================
+
+# === MONITOREO Y DIAGNÓSTICO ===
+htop
+btop
+neofetch
+lshw
+inxi
+tree
+fd
+ripgrep
+bat
+exa
+dust
+duf
+
+# === COMPRESIÓN Y ARCHIVOS ===
+zip
+unzip
+tar
+gzip
+p7zip
+rsync
+rclone
+
+# === NETWORK TOOLS ===
+wget
+curl
+nmap
+traceroute
+whois
+dig
+iperf3
+
+# === SYSTEM UTILITIES ===
+systemctl
+journalctl
+dmesg
+lsof
+ps
+kill
+pkill
+pgrep
+crontab
+at
+
+# === TEXTO Y EDITORES ===
+vim
+nano
+micro
+jq
+yq
+xmlstarlet
+
+# === BENCHMARK Y TESTING ===
+stress
+memtester
+smartmontools
+hdparm
+iotop
+nethogs

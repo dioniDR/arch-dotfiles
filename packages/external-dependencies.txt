@@ -1,0 +1,65 @@
+# ========================================
+# DEPENDENCIAS EXTERNAS
+# Requieren instalación especial o configuración
+# ========================================
+
+# === AUR PACKAGES ===
+# Instalar con yay o paru
+# yay -S package-name
+
+# Hyprland extras
+hyprpicker-git
+hyprlock-git
+hypridle-git
+wlogout-git
+
+# Themes y customización
+catppuccin-gtk-theme-mocha
+catppuccin-cursors-mocha
+kvantum-qt5
+kvantum-theme-catppuccin-git
+
+# Development tools
+visual-studio-code-bin
+insomnia-bin
+postman-bin
+discord
+spotify
+
+# === FLATPAK PACKAGES ===
+# flatpak install flathub app.id
+
+org.mozilla.firefox
+org.libreoffice.LibreOffice
+org.gimp.GIMP
+org.blender.Blender
+com.obsproject.Studio
+org.videolan.VLC
+org.telegram.desktop
+
+# === SNAP PACKAGES ===
+# snap install package-name
+
+# (Usar solo si necesario, preferir flatpak)
+
+# === MANUAL INSTALLATIONS ===
+# Descargar e instalar manualmente
+
+# Fonts personalizadas
+# JetBrains Mono Nerd Font
+# Fira Code Nerd Font
+# Meslo LG Nerd Font
+
+# === CONFIGURACIONES POST-INSTALACIÓN ===
+# Comandos a ejecutar después de instalar
+
+# Habilitar servicios
+systemctl enable NetworkManager
+systemctl enable bluetooth
+systemctl enable pipewire
+systemctl enable docker
+
+# Configurar grupos de usuario
+usermod -aG docker $USER
+usermod -aG audio $USER
+usermod -aG video $USER
