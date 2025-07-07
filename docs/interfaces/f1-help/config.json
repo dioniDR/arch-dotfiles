@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "Arch Dotfiles - Guía Rápida",
+    "version": "1.0.0", 
+    "theme": "catppuccin",
+    "hardware": "AMD Ryzen AI 9 365",
+    "completion": 75
+  },
+  "sections": [
+    {
+      "id": "status",
+      "title": "📊 Estado del Sistema",
+      "icon": "📊",
+      "file": "content/status.md",
+      "priority": 1
+    },
+    {
+      "id": "keybindings", 
+      "title": "⌨️ Atajos de Teclado",
+      "icon": "⌨️",
+      "file": "content/keybindings.md",
+      "priority": 2
+    },
+    {
+      "id": "commands",
+      "title": "💻 Comandos Frecuentes",
+      "icon": "💻", 
+      "file": "content/commands.md",
+      "priority": 3
+    },
+    {
+      "id": "troubleshooting",
+      "title": "🔧 Soluciones Rápidas",
+      "icon": "🔧",
+      "file": "content/troubleshooting.md",
+      "priority": 4
+    }
+  ]
+}
