@@ -1,5 +1,5 @@
 # 🏠 Arch Linux + Hyprland Dotfiles
-*Generado automáticamente el 04/07/2025 08:30*
+*Generado automáticamente el 17/07/2025 21:47*
 
 ## 🖥️ Hardware Detectado
 
@@ -7,7 +7,7 @@
 - **RAM**: 22Gi
 - **GPU**: 
 - **Kernel**: Linux 6.15.4-arch2-1
-- **Uptime**: 59 minutes
+- **Uptime**: 6 minutes
 
 ## 🚀 Estado del Sistema
 
@@ -20,11 +20,11 @@
 
 ## 📊 Estadísticas Dinámicas
 
-- **Paquetes oficiales**: 113
-- **Paquetes AUR**: 8
+- **Paquetes oficiales**: 118
+- **Paquetes AUR**: 7
 - **Extensiones VS Code**: 3
-- **Configuraciones**: 27 directorios en ~/.config
-- **Tamaño total**: 57M
+- **Configuraciones**: 28 directorios en ~/.config
+- **Tamaño total**: 58M
 
 ## 🔧 Stack Tecnológico
 

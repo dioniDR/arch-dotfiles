@@ -3,6 +3,5 @@ claude-code 1.0.31-1
 claude-code-debug 1.0.31-1
 libinput-gestures 2.80-1
 visual-studio-code-bin 1.101.1-1
-warp-terminal-bin 0.2025.06.11.08.11.stable_01-1
 yay 12.5.0-1
 yay-debug 12.5.0-1
