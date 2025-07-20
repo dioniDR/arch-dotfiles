@@ -1,13 +1,13 @@
 # 🏠 Arch Linux + Hyprland Dotfiles
-*Generado automáticamente el 17/07/2025 21:47*
+*Generado automáticamente el 20/07/2025 07:52*
 
 ## 🖥️ Hardware Detectado
 
 - **CPU**: AMD Ryzen AI 9 365 w/ Radeon 880M (20 cores)
 - **RAM**: 22Gi
 - **GPU**: 
-- **Kernel**: Linux 6.15.4-arch2-1
-- **Uptime**: 6 minutes
+- **Kernel**: Linux 6.15.7-arch1-1
+- **Uptime**: 11 minutes
 
 ## 🚀 Estado del Sistema
 
