@@ -1,0 +1,319 @@
+{
+  "system_info": {
+    "name": "Arch Linux Hyprland Complete Setup",
+    "description": "Sistema completo de desarrollo con Hyprland desde Arch base",
+    "version": "1.0",
+    "total_packages": 46,
+    "created": "2025-08-27",
+    "evolution_stages": 9
+  },
+  "package_summary": {
+    "critical": {
+      "count": 11,
+      "description": "Sistema no funciona sin estos",
+      "file": "packages-critical.json"
+    },
+    "functional": {
+      "count": 28, 
+      "description": "UX completa del desktop",
+      "file": "packages-functional.json"
+    },
+    "productivity": {
+      "count": 6,
+      "description": "Herramientas de desarrollo",
+      "file": "packages-productivity.json"
+    }
+  },
+  "all_packages": [
+    {
+      "name": "git",
+      "category": "critical",
+      "source": "pacman",
+      "escalon": 1
+    },
+    {
+      "name": "yay", 
+      "category": "critical",
+      "source": "manual",
+      "escalon": 1
+    },
+    {
+      "name": "base-devel",
+      "category": "critical", 
+      "source": "pacman",
+      "escalon": 1
+    },
+    {
+      "name": "greetd",
+      "category": "critical",
+      "source": "pacman",
+      "escalon": 2
+    },
+    {
+      "name": "greetd-tuigreet",
+      "category": "critical",
+      "source": "pacman", 
+      "escalon": 2
+    },
+    {
+      "name": "hyprland",
+      "category": "critical",
+      "source": "pacman",
+      "escalon": 3
+    },
+    {
+      "name": "xorg-xwayland",
+      "category": "critical",
+      "source": "pacman",
+      "escalon": 3
+    },
+    {
+      "name": "kitty",
+      "category": "critical",
+      "source": "pacman",
+      "escalon": 4
+    },
+    {
+      "name": "waybar",
+      "category": "critical",
+      "source": "pacman",
+      "escalon": 4
+    },
+    {
+      "name": "wofi",
+      "category": "critical",
+      "source": "pacman",
+      "escalon": 4
+    },
+    {
+      "name": "thunar",
+      "category": "critical",
+      "source": "pacman",
+      "escalon": 4
+    },
+    {
+      "name": "pipewire",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 5
+    },
+    {
+      "name": "pipewire-alsa",
+      "category": "functional", 
+      "source": "pacman",
+      "escalon": 5
+    },
+    {
+      "name": "pipewire-pulse",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 5
+    },
+    {
+      "name": "pamixer",
+      "category": "functional",
+      "source": "pacman", 
+      "escalon": 5
+    },
+    {
+      "name": "ttf-nerd-fonts-symbols-mono",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 6
+    },
+    {
+      "name": "ttf-font-awesome",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 6
+    },
+    {
+      "name": "brightnessctl",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 6
+    },
+    {
+      "name": "grim",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 6
+    },
+    {
+      "name": "slurp",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 6
+    },
+    {
+      "name": "mako",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 6
+    },
+    {
+      "name": "firefox",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 6
+    },
+    {
+      "name": "hypridle",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 7
+    },
+    {
+      "name": "hyprlock",
+      "category": "functional", 
+      "source": "pacman",
+      "escalon": 7
+    },
+    {
+      "name": "hyprpaper",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 7
+    },
+    {
+      "name": "wl-clipboard",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 7
+    },
+    {
+      "name": "jq",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 7
+    },
+    {
+      "name": "playerctl",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 7
+    },
+    {
+      "name": "polkit-gnome",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 7
+    },
+    {
+      "name": "blueman",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 7
+    },
+    {
+      "name": "network-manager-applet",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 7
+    },
+    {
+      "name": "udiskie",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 7
+    },
+    {
+      "name": "libinput-gestures",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 7
+    },
+    {
+      "name": "xdg-desktop-portal-hyprland",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 7
+    },
+    {
+      "name": "xdg-desktop-portal",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 7
+    },
+    {
+      "name": "mousepad",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 8
+    },
+    {
+      "name": "htop",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 8
+    },
+    {
+      "name": "wlogout",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 8
+    },
+    {
+      "name": "gnome-control-center",
+      "category": "functional",
+      "source": "pacman",
+      "escalon": 8
+    },
+    {
+      "name": "wofi-emoji",
+      "category": "functional",
+      "source": "yay",
+      "escalon": 8
+    },
+    {
+      "name": "zsh",
+      "category": "productivity",
+      "source": "pacman",
+      "escalon": 9
+    },
+    {
+      "name": "zsh-autosuggestions",
+      "category": "productivity",
+      "source": "pacman",
+      "escalon": 9
+    },
+    {
+      "name": "zsh-completions",
+      "category": "productivity",
+      "source": "pacman",
+      "escalon": 9
+    },
+    {
+      "name": "zsh-syntax-highlighting",
+      "category": "productivity",
+      "source": "pacman",
+      "escalon": 9
+    },
+    {
+      "name": "fzf",
+      "category": "productivity",
+      "source": "pacman",
+      "escalon": 9
+    },
+    {
+      "name": "zoxide",
+      "category": "productivity", 
+      "source": "pacman",
+      "escalon": 9
+    }
+  ],
+  "installation_methods": {
+    "ultra_fast": {
+      "description": "Instalación completa en 2 comandos",
+      "commands": [
+        "pacman -S git base-devel greetd greetd-tuigreet hyprland xorg-xwayland kitty waybar wofi thunar pipewire pipewire-alsa pipewire-pulse pamixer ttf-nerd-fonts-symbols-mono ttf-font-awesome brightnessctl grim slurp mako firefox hypridle hyprlock hyprpaper wl-clipboard jq playerctl polkit-gnome blueman network-manager-applet udiskie libinput-gestures xdg-desktop-portal-hyprland xdg-desktop-portal mousepad htop wlogout gnome-control-center zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting fzf zoxide",
+        "yay -S wofi-emoji"
+      ]
+    },
+    "by_category": {
+      "critical": "pacman -S git base-devel greetd greetd-tuigreet hyprland xorg-xwayland kitty waybar wofi thunar",
+      "functional": "pacman -S pipewire pipewire-alsa pipewire-pulse pamixer ttf-nerd-fonts-symbols-mono ttf-font-awesome brightnessctl grim slurp mako firefox hypridle hyprlock hyprpaper wl-clipboard jq playerctl polkit-gnome blueman network-manager-applet udiskie libinput-gestures xdg-desktop-portal-hyprland xdg-desktop-portal mousepad htop wlogout gnome-control-center && yay -S wofi-emoji",
+      "productivity": "pacman -S zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting fzf zoxide"
+    }
+  }
+}

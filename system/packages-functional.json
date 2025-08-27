@@ -1,0 +1,214 @@
+{
+  "metadata": {
+    "category": "functional", 
+    "description": "Programas funcionales - UX completa del desktop",
+    "priority": 2,
+    "install_order": "parallel_allowed",
+    "total_packages": 28
+  },
+  "escalon_5_audio": {
+    "description": "Sistema de audio moderno",
+    "packages": [
+      {
+        "name": "pipewire",
+        "source": "pacman",
+        "description": "Servidor de audio moderno",
+        "required_for": ["audio_server"]
+      },
+      {
+        "name": "pipewire-alsa",
+        "source": "pacman", 
+        "description": "Compatibilidad ALSA",
+        "required_for": ["alsa_compatibility"]
+      },
+      {
+        "name": "pipewire-pulse",
+        "source": "pacman",
+        "description": "Compatibilidad PulseAudio",
+        "required_for": ["pulse_compatibility"]
+      },
+      {
+        "name": "pamixer",
+        "source": "pacman",
+        "description": "Control de volumen CLI",
+        "required_for": ["volume_control"]
+      }
+    ]
+  },
+  "escalon_6_graphics": {
+    "description": "Utilidades gráficas y navegador",
+    "packages": [
+      {
+        "name": "ttf-nerd-fonts-symbols-mono",
+        "source": "pacman",
+        "description": "Iconos monospace",
+        "required_for": ["waybar_icons"]
+      },
+      {
+        "name": "ttf-font-awesome",
+        "source": "pacman",
+        "description": "Iconos Font Awesome", 
+        "required_for": ["ui_icons"]
+      },
+      {
+        "name": "brightnessctl",
+        "source": "pacman",
+        "description": "Control de brillo",
+        "required_for": ["brightness_control"]
+      },
+      {
+        "name": "grim",
+        "source": "pacman",
+        "description": "Screenshots Wayland",
+        "required_for": ["screenshots"]
+      },
+      {
+        "name": "slurp",
+        "source": "pacman",
+        "description": "Selector de área",
+        "required_for": ["area_selection"]
+      },
+      {
+        "name": "mako",
+        "source": "pacman",
+        "description": "Notificaciones",
+        "required_for": ["notifications"]
+      },
+      {
+        "name": "firefox",
+        "source": "pacman",
+        "description": "Navegador web",
+        "required_for": ["web_browser"]
+      }
+    ]
+  },
+  "escalon_7_hyprland_ecosystem": {
+    "description": "Ecosistema completo de Hyprland",
+    "packages": [
+      {
+        "name": "hypridle",
+        "source": "pacman",
+        "description": "Daemon de inactividad",
+        "required_for": ["idle_management"]
+      },
+      {
+        "name": "hyprlock",
+        "source": "pacman",
+        "description": "Bloqueador de pantalla", 
+        "required_for": ["screen_lock"]
+      },
+      {
+        "name": "hyprpaper",
+        "source": "pacman",
+        "description": "Gestor de wallpapers",
+        "required_for": ["wallpaper_management"]
+      },
+      {
+        "name": "wl-clipboard",
+        "source": "pacman",
+        "description": "Portapapeles Wayland",
+        "required_for": ["clipboard"]
+      },
+      {
+        "name": "jq",
+        "source": "pacman",
+        "description": "Procesador JSON",
+        "required_for": ["screenshot_scripts"]
+      },
+      {
+        "name": "playerctl",
+        "source": "pacman",
+        "description": "Control multimedia",
+        "required_for": ["media_control"]
+      },
+      {
+        "name": "polkit-gnome",
+        "source": "pacman",
+        "description": "Autenticación gráfica",
+        "required_for": ["privilege_escalation"]
+      },
+      {
+        "name": "blueman",
+        "source": "pacman",
+        "description": "Gestor Bluetooth",
+        "required_for": ["bluetooth_management"]
+      },
+      {
+        "name": "network-manager-applet",
+        "source": "pacman",
+        "description": "Applet de red",
+        "required_for": ["network_gui"]
+      },
+      {
+        "name": "udiskie", 
+        "source": "pacman",
+        "description": "Auto-montaje USB",
+        "required_for": ["usb_automount"]
+      },
+      {
+        "name": "libinput-gestures",
+        "source": "pacman",
+        "description": "Gestos touchpad",
+        "required_for": ["touchpad_gestures"]
+      },
+      {
+        "name": "xdg-desktop-portal-hyprland",
+        "source": "pacman",
+        "description": "Portal Hyprland",
+        "required_for": ["desktop_integration"]
+      },
+      {
+        "name": "xdg-desktop-portal",
+        "source": "pacman", 
+        "description": "Portal base",
+        "required_for": ["desktop_portals"]
+      }
+    ]
+  },
+  "escalon_8_tools": {
+    "description": "Herramientas del sistema y productividad",
+    "packages": [
+      {
+        "name": "mousepad",
+        "source": "pacman",
+        "description": "Editor de texto ligero",
+        "required_for": ["text_editing"]
+      },
+      {
+        "name": "htop",
+        "source": "pacman",
+        "description": "Monitor del sistema", 
+        "required_for": ["system_monitoring"]
+      },
+      {
+        "name": "wlogout",
+        "source": "pacman",
+        "description": "Menú de logout/apagado",
+        "required_for": ["session_management"]
+      },
+      {
+        "name": "gnome-control-center",
+        "source": "pacman",
+        "description": "Centro de control",
+        "required_for": ["system_settings"]
+      },
+      {
+        "name": "wofi-emoji",
+        "source": "yay",
+        "description": "Selector de emojis",
+        "required_for": ["emoji_input"]
+      }
+    ]
+  },
+  "install_commands": {
+    "by_escalon": [
+      "pacman -S pipewire pipewire-alsa pipewire-pulse pamixer",
+      "pacman -S ttf-nerd-fonts-symbols-mono ttf-font-awesome brightnessctl grim slurp mako firefox",
+      "pacman -S hypridle hyprlock hyprpaper wl-clipboard jq playerctl polkit-gnome blueman network-manager-applet udiskie libinput-gestures xdg-desktop-portal-hyprland xdg-desktop-portal",
+      "pacman -S mousepad htop wlogout gnome-control-center",
+      "yay -S wofi-emoji"
+    ],
+    "single_pacman": "pacman -S pipewire pipewire-alsa pipewire-pulse pamixer ttf-nerd-fonts-symbols-mono ttf-font-awesome brightnessctl grim slurp mako firefox hypridle hyprlock hyprpaper wl-clipboard jq playerctl polkit-gnome blueman network-manager-applet udiskie libinput-gestures xdg-desktop-portal-hyprland xdg-desktop-portal mousepad htop wlogout gnome-control-center",
+    "aur_only": "yay -S wofi-emoji"
+  }
+}

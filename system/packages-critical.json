@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "category": "critical",
+    "description": "Programas críticos - Sistema no funciona sin estos",
+    "priority": 1,
+    "install_order": "sequential",
+    "total_packages": 11
+  },
+  "escalon_1_base": {
+    "description": "Herramientas de desarrollo base",
+    "packages": [
+      {
+        "name": "git",
+        "source": "pacman",
+        "description": "Control de versiones",
+        "required_for": ["dotfiles", "development"]
+      },
+      {
+        "name": "yay", 
+        "source": "manual",
+        "description": "AUR helper",
+        "required_for": ["aur_packages"]
+      },
+      {
+        "name": "base-devel",
+        "source": "pacman",
+        "description": "Herramientas de compilación",
+        "required_for": ["building_packages"]
+      }
+    ]
+  },
+  "escalon_2_display": {
+    "description": "Display manager - Login gráfico",
+    "packages": [
+      {
+        "name": "greetd",
+        "source": "pacman", 
+        "description": "Display manager minimalista",
+        "required_for": ["graphical_login"]
+      },
+      {
+        "name": "greetd-tuigreet",
+        "source": "pacman",
+        "description": "Interfaz TUI para greetd", 
+        "required_for": ["login_interface"]
+      }
+    ]
+  },
+  "escalon_3_compositor": {
+    "description": "Compositor - Interfaz gráfica básica",
+    "packages": [
+      {
+        "name": "hyprland",
+        "source": "pacman",
+        "description": "Compositor Wayland",
+        "required_for": ["window_manager"]
+      },
+      {
+        "name": "xorg-xwayland", 
+        "source": "pacman",
+        "description": "Compatibilidad X11",
+        "required_for": ["x11_apps"]
+      }
+    ]
+  },
+  "escalon_4_apps": {
+    "description": "Aplicaciones básicas esenciales",
+    "packages": [
+      {
+        "name": "kitty",
+        "source": "pacman",
+        "description": "Terminal emulator",
+        "required_for": ["terminal_access"]
+      },
+      {
+        "name": "waybar",
+        "source": "pacman", 
+        "description": "Barra de estado/panel",
+        "required_for": ["status_bar"]
+      },
+      {
+        "name": "wofi",
+        "source": "pacman",
+        "description": "Launcher de aplicaciones",
+        "required_for": ["app_launcher"]
+      },
+      {
+        "name": "thunar",
+        "source": "pacman",
+        "description": "Gestor de archivos",
+        "required_for": ["file_manager"]
+      }
+    ]
+  },
+  "install_commands": {
+    "sequential": [
+      "pacman -S git yay base-devel",
+      "pacman -S greetd greetd-tuigreet", 
+      "pacman -S hyprland xorg-xwayland",
+      "pacman -S kitty waybar wofi thunar"
+    ],
+    "single_command": "pacman -S git base-devel greetd greetd-tuigreet hyprland xorg-xwayland kitty waybar wofi thunar"
+  },
+  "post_install": {
+    "services": [
+      "systemctl enable greetd"
+    ],
+    "user_setup": [
+      "Configure yay manually or use script"
+    ]
+  }
+}

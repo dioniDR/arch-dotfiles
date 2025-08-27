@@ -1,0 +1,41 @@
+/* Thunar completamente transparente */
+.thunar {
+    background-color: transparent;
+}
+
+/* Todo transparente */
+.thunar .view,
+.thunar .sidebar,
+.thunar .toolbar {
+    background-color: transparent;
+    border: none;
+}
+
+/* Texto con mejor contraste */
+.thunar .view .cell,
+.thunar .view text,
+.thunar .sidebar text,
+.thunar .toolbar text {
+    background-color: transparent;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Texto seleccionado */
+.thunar .view .cell:selected,
+.thunar .view text:selected {
+    color: #ffffff;
+    background-color: rgba(116, 162, 247, 0.6);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* Hover sutil para navegación */
+.thunar .view .cell:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.thunar .sidebar row:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}

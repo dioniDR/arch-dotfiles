@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "category": "productivity",
+    "description": "Herramientas de productividad y desarrollo",
+    "priority": 3,
+    "install_order": "optional",
+    "total_packages": 6
+  },
+  "escalon_9_shell": {
+    "description": "Shell ZSH completo para desarrollo",
+    "packages": [
+      {
+        "name": "zsh",
+        "source": "pacman",
+        "description": "Z Shell avanzado",
+        "required_for": ["advanced_shell"]
+      },
+      {
+        "name": "zsh-autosuggestions",
+        "source": "pacman",
+        "description": "Sugerencias automáticas",
+        "required_for": ["command_suggestions"]
+      },
+      {
+        "name": "zsh-completions",
+        "source": "pacman",
+        "description": "Completado extendido",
+        "required_for": ["advanced_completion"]
+      },
+      {
+        "name": "zsh-syntax-highlighting",
+        "source": "pacman",
+        "description": "Resaltado de sintaxis",
+        "required_for": ["syntax_highlighting"]
+      },
+      {
+        "name": "fzf",
+        "source": "pacman",
+        "description": "Buscador fuzzy finder",
+        "required_for": ["fuzzy_search"]
+      },
+      {
+        "name": "zoxide",
+        "source": "pacman",
+        "description": "Navegación inteligente",
+        "required_for": ["smart_cd"]
+      }
+    ]
+  },
+  "features": {
+    "fzf_keybindings": [
+      "Ctrl+R - Búsqueda en historial",
+      "Ctrl+T - Búsqueda de archivos", 
+      "Alt+C - Cambio de directorio"
+    ],
+    "zoxide_commands": [
+      "z <directorio> - Navegar a directorio frecuente",
+      "zi - Modo interactivo con fzf",
+      "z - - Directorio anterior"
+    ],
+    "zsh_features": [
+      "Autocompletado inteligente",
+      "Sugerencias basadas en historial",
+      "Resaltado de sintaxis en tiempo real",
+      "Historial compartido entre sesiones"
+    ]
+  },
+  "install_commands": {
+    "single_command": "pacman -S zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting fzf zoxide"
+  },
+  "post_install": {
+    "required_setup": [
+      "chsh -s $(which zsh)",
+      "echo 'source /usr/share/fzf/completion.zsh' > ~/.fzf.zsh",
+      "echo 'source /usr/share/fzf/key-bindings.zsh' >> ~/.fzf.zsh"
+    ],
+    "config_files": [
+      "~/.zshrc - From dotfiles/shell/.zshrc"
+    ]
+  }
+}
