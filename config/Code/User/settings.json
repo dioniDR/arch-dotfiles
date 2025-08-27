@@ -1,3 +1,47 @@
 {
-    "git.enableSmartCommit": true
+    "git.enableSmartCommit": true,
+    
+    // Excluir directorios pesados del indexado
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/node_modules": true,
+        "**/.cache": true,
+        "**/.local/share": true,
+        "**/Downloads": true,
+        "**/Music": true,
+        "**/Videos": true,
+        "**/Pictures": true,
+        "**/.npm": true,
+        "**/.cargo": true,
+        "**/.rustup": true
+    },
+    
+    // Limitar búsquedas para mejor rendimiento
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/.git": true,
+        "**/.cache": true,
+        "**/target": true,
+        "**/dist": true,
+        "**/build": true
+    },
+    
+    // Optimizar watcher de archivos
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/.cache/**": true,
+        "**/target/**": true
+    },
+    
+    // Limitar uso de memoria
+    "typescript.preferences.maxInlayHintLength": 30,
+    "search.smartCase": true,
+    "search.maxResults": 10000
 }
