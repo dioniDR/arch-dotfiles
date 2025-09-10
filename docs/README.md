@@ -164,7 +164,8 @@ hyprctl reload
 - **Botón integrado en waybar** con controles contextuales
 - **GStreamer backend** para grabación de alta calidad
 - **Gestión de archivos** automática con timestamps
-- **Dependencies críticas**: `gstreamer`, `gst-plugins-good`, `pavucontrol`, `thunar`
+- **Reproducción instantánea** - doble click reproduce inmediatamente
+- **Dependencies críticas**: `gstreamer`, `gst-plugins-good`, `pavucontrol`, `thunar`, `ffmpeg`
 
 ---
 **Sistema completo de desarrollo Hyprland** | *48 paquetes documentados + grabación integrada*
