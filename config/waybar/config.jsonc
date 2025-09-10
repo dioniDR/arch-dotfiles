@@ -6,7 +6,7 @@
     
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "cpu", "memory", "disk", "network", "bluetooth", "custom/audio", "battery", "custom/power"],
+    "modules-right": ["tray", "cpu", "memory", "disk", "network", "bluetooth", "custom/audio", "custom/record", "battery", "custom/power"],
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
@@ -80,6 +80,16 @@
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+        "tooltip": true
+    },
+
+    "custom/record": {
+        "exec": "~/.config/waybar/scripts/record-status.sh",
+        "return-type": "json",
+        "interval": 1,
+        "on-click": "~/.config/waybar/scripts/record-toggle.sh",
+        "on-click-right": "thunar ~/Recordings",
+        "on-click-middle": "pavucontrol",
         "tooltip": true
     },
 
