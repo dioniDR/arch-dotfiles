@@ -4,7 +4,7 @@
     "description": "Programas funcionales - UX completa del desktop",
     "priority": 2,
     "install_order": "parallel_allowed",
-    "total_packages": 28
+    "total_packages": 30
   },
   "escalon_5_audio": {
     "description": "Sistema de audio moderno",
@@ -32,6 +32,18 @@
         "source": "pacman",
         "description": "Control de volumen CLI",
         "required_for": ["volume_control"]
+      },
+      {
+        "name": "pavucontrol",
+        "source": "pacman",
+        "description": "Control de volumen GUI",
+        "required_for": ["audio_mixer_gui"]
+      },
+      {
+        "name": "audacity",
+        "source": "pacman",
+        "description": "Editor/grabador de audio",
+        "required_for": ["audio_recording", "voice_notes"]
       }
     ]
   },
@@ -202,13 +214,13 @@
   },
   "install_commands": {
     "by_escalon": [
-      "pacman -S pipewire pipewire-alsa pipewire-pulse pamixer",
+      "pacman -S pipewire pipewire-alsa pipewire-pulse pamixer pavucontrol audacity",
       "pacman -S ttf-nerd-fonts-symbols-mono ttf-font-awesome brightnessctl grim slurp mako firefox",
       "pacman -S hypridle hyprlock hyprpaper wl-clipboard jq playerctl polkit-gnome blueman network-manager-applet udiskie libinput-gestures xdg-desktop-portal-hyprland xdg-desktop-portal",
       "pacman -S mousepad htop wlogout gnome-control-center",
       "yay -S wofi-emoji"
     ],
-    "single_pacman": "pacman -S pipewire pipewire-alsa pipewire-pulse pamixer ttf-nerd-fonts-symbols-mono ttf-font-awesome brightnessctl grim slurp mako firefox hypridle hyprlock hyprpaper wl-clipboard jq playerctl polkit-gnome blueman network-manager-applet udiskie libinput-gestures xdg-desktop-portal-hyprland xdg-desktop-portal mousepad htop wlogout gnome-control-center",
+    "single_pacman": "pacman -S pipewire pipewire-alsa pipewire-pulse pamixer pavucontrol audacity ttf-nerd-fonts-symbols-mono ttf-font-awesome brightnessctl grim slurp mako firefox hypridle hyprlock hyprpaper wl-clipboard jq playerctl polkit-gnome blueman network-manager-applet udiskie libinput-gestures xdg-desktop-portal-hyprland xdg-desktop-portal mousepad htop wlogout gnome-control-center",
     "aur_only": "yay -S wofi-emoji"
   }
 }
