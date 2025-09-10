@@ -31,10 +31,10 @@
 ### Core System
 - **OS**: Arch Linux
 - **WM**: Hyprland (Wayland)
-- **Bar**: Waybar con módulos de rendimiento
+- **Bar**: Waybar con módulos de rendimiento + grabación de voz
 - **Launcher**: Wofi (blur + transparencias)
 - **Notifications**: Mako
-- **Audio**: PulseAudio
+- **Audio**: PipeWire + GStreamer (grabación integrada)
 
 ### Development Tools
 - **Terminal**: Kitty
@@ -154,11 +154,17 @@ hyprctl reload
 
 ## 📊 Sistema Completo
 
-- **46 paquetes** desde Arch base hasta sistema completo
+- **48 paquetes** desde Arch base hasta sistema completo
 - **9 escalones** de evolución documentados
-- **3 categorías**: Críticos (11) + Funcionales (28) + Productividad (6)
+- **3 categorías**: Críticos (11) + Funcionales (30) + Productividad (6)
 - **Tiempo de setup**: ~45 minutos
 - **Verificación automática** con scripts incluidos
 
+### 🎙️ Funcionalidad de Grabación
+- **Botón integrado en waybar** con controles contextuales
+- **GStreamer backend** para grabación de alta calidad
+- **Gestión de archivos** automática con timestamps
+- **Dependencies críticas**: `gstreamer`, `gst-plugins-good`, `pavucontrol`, `thunar`
+
 ---
-**Sistema completo de desarrollo Hyprland** | *46 paquetes documentados*
+**Sistema completo de desarrollo Hyprland** | *48 paquetes documentados + grabación integrada*
