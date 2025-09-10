@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=FFplay Audio Player
+Comment=Simple audio player using FFmpeg
+Exec=ffplay %f -nodisp -autoexit
+Icon=audio-x-generic
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Player;
+MimeType=audio/wav;audio/mpeg;audio/mp3;audio/ogg;audio/flac;
+NoDisplay=false
