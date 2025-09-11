@@ -22,7 +22,7 @@ PROGRESS_FILE="/tmp/audio-player-progress.txt"
 # Check if already playing this file
 if [ -f "$PID_FILE" ]; then
     if kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
-        notify-send "🛑 Audio Player" "Deteniendo reproducción de $FILENAME"
+        notify-send "⏹ DETENIDO" "$FILENAME\n\nReproducción detenida por el usuario" -t 2000 -i audio-x-generic
         kill "$(cat "$PID_FILE")" 2>/dev/null
         rm -f "$PID_FILE" "$PROGRESS_FILE"
         exit 0
@@ -57,15 +57,15 @@ show_progress() {
         local percentage=$((elapsed * 100 / duration))
         
         # Create progress bar
-        local bar_length=20
+        local bar_length=15
         local filled=$((elapsed * bar_length / duration))
         local bar=""
         
         for ((j=0; j<bar_length; j++)); do
             if [ $j -lt $filled ]; then
-                bar="${bar}█"
+                bar="${bar}■"
             else
-                bar="${bar}░"
+                bar="${bar}□"
             fi
         done
         
@@ -80,9 +80,9 @@ show_progress() {
         # Update progress file for external monitoring
         echo "$percentage|$bar|$time_str" > "$PROGRESS_FILE"
         
-        # Show notification every 5 seconds or at start
-        if [ $((i % 5)) -eq 0 ] || [ $i -eq 0 ]; then
-            notify-send "🎵 Reproduciendo" "$filename\n$bar $percentage% ($time_str)\n\n🛑 Doble-clic para detener" -t 2000
+        # Show notification every 3 seconds or at start
+        if [ $((i % 3)) -eq 0 ] || [ $i -eq 0 ]; then
+            notify-send "▶ REPRODUCIENDO" "$filename\n\n$bar $percentage%\n$time_str\n\n⏹ DETENER: Doble-clic en el mismo archivo" -t 2500 -i audio-x-generic
         fi
         
         sleep 1
@@ -113,13 +113,13 @@ show_progress() {
     rm -f "$PID_FILE" "$PROGRESS_FILE"
     
     if [ $PLAYBACK_RESULT -eq 0 ]; then
-        notify-send "✅ Completado" "Reproducción de $FILENAME finalizada" -t 1500
+        notify-send "✅ COMPLETADO" "$FILENAME\n\nReproducción finalizada" -t 2000 -i audio-x-generic
     else
-        notify-send "❌ Error" "Error al reproducir $FILENAME" -t 2000
+        notify-send "❌ ERROR" "$FILENAME\n\nError durante la reproducción" -t 2000 -i dialog-error
     fi
 ) &
 
 # Store main process PID
 echo $! > "$PID_FILE"
 
-notify-send "🎵 Iniciando" "$FILENAME\n▶️ Reproduciendo con controles\n🛑 Doble-clic nuevamente para detener" -t 3000
+notify-send "▶ INICIANDO" "$FILENAME\n\nReproduciendo con controles avanzados\n⏹ PARA DETENER: Doble-clic en el mismo archivo\n\nActualizaciones cada 3 segundos..." -t 4000 -i audio-x-generic
