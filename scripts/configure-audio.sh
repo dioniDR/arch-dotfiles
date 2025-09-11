@@ -17,8 +17,11 @@ pactl set-default-source alsa_input.pci-0000_63_00.6.analog-stereo
 
 echo "✅ Configuración de audio completada:"
 echo "   🔊 Salida: Speakers internos"
-echo "   🎤 Entrada: Micrófono interno"
+echo "   🎤 Entrada: Micrófono interno (silenciado por defecto)"
 echo "   ❌ HDMI desactivado (evita conflictos)"
+
+# Silenciar micrófono por defecto (se activa solo al grabar)
+pactl set-source-mute alsa_input.pci-0000_63_00.6.analog-stereo 1
 
 # Mostrar estado actual
 echo ""
