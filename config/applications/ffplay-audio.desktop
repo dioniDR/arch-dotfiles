@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=FFplay Audio Player
 Comment=Simple audio player using FFmpeg
-Exec=ffplay %f -nodisp -autoexit
+Exec=/home/dioni/arch-dotfiles/scripts/play_with_feedback.sh %f
 Icon=audio-x-generic
-Terminal=false
+Terminal=true
 Type=Application
 Categories=AudioVideo;Audio;Player;
 MimeType=audio/wav;audio/mpeg;audio/mp3;audio/ogg;audio/flac;
