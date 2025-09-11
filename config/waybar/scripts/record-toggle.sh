@@ -46,10 +46,11 @@ else
     # Start GStreamer recording in background using specific device
     gst-launch-1.0 pulsesrc device="alsa_input.pci-0000_63_00.6.analog-stereo" ! audioconvert ! audioresample ! \
         audio/x-raw,format=S16LE,channels=1,rate=44100 ! \
-        wavenc ! filesink location="$OUTPUT_FILE" &
+        wavenc ! filesink location="$OUTPUT_FILE" > /dev/null 2>&1 &
     
     # Store PID and create flag
-    echo $! > "$PID_FILE"
+    RECORDING_PID=$!
+    echo "$RECORDING_PID" > "$PID_FILE"
     touch "$FLAG_FILE"
     
     # Send notification

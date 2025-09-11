@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=FFplay Audio Player
 Comment=Simple audio player using FFmpeg
-Exec=/home/dioni/arch-dotfiles/scripts/play_with_notification.sh %f
+Exec=/home/dioni/arch-dotfiles/scripts/play_with_controls.sh %f
 Icon=audio-x-generic
 Terminal=false
 Type=Application
