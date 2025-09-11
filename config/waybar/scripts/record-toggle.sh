@@ -29,8 +29,8 @@ else
     TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
     OUTPUT_FILE="$RECORDING_DIR/nota_$TIMESTAMP.wav"
     
-    # Start GStreamer recording in background
-    gst-launch-1.0 pulsesrc ! audioconvert ! audioresample ! \
+    # Start GStreamer recording in background using specific device
+    gst-launch-1.0 pulsesrc device="alsa_input.pci-0000_63_00.6.analog-stereo" ! audioconvert ! audioresample ! \
         audio/x-raw,format=S16LE,channels=1,rate=44100 ! \
         wavenc ! filesink location="$OUTPUT_FILE" &
     
