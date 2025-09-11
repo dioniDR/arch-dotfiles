@@ -231,3 +231,34 @@ tooltip {
     50% { opacity: 0.3; }
     100% { opacity: 1; }
 }
+
+/* Audio playback control button styles */
+#custom-playback {
+    background: #a6e3a1;
+    color: #11111b;
+    border-radius: 10px;
+    padding: 2px 10px;
+    margin: 0 2px;
+    transition: all 0.3s ease;
+}
+
+#custom-playback:hover {
+    background: #94d3a2;
+}
+
+#custom-playback.playing {
+    background: #89b4fa;
+    color: #11111b;
+    animation: pulse-blue 2s infinite;
+}
+
+#custom-playback.idle {
+    background: #a6e3a1;
+    color: #11111b;
+}
+
+@keyframes pulse-blue {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
