@@ -1,7 +1,7 @@
 # 🎯 Análisis de Configuraciones de Gestos del Touchpad
 ## Repositorio: arch-dotfiles
 
-**Fecha de análisis:** 8 de agosto de 2025  
+**Fecha de análisis:** 8 de agosto de 2025 - **ACTUALIZADO: 13 de septiembre de 2025 (Hyprland 0.51)**
 **Rama:** main  
 **Usuario:** dioniDR
 
@@ -32,14 +32,15 @@ touchpad {
 }
 ```
 
-### 2. Configuración de Gestos en Hyprland
-**Archivo:** `/config/hypr/hyprland.conf` (líneas 127-129)
+### 2. Configuración de Gestos en Hyprland (ACTUALIZADO PARA 0.51)
+**Archivo:** `/config/hypr/hyprland.conf` (línea ~163)
 
 ```properties
-gestures {
-    workspace_swipe = off         # ❌ Gestos de workspace DESHABILITADOS
-}
+# Gestures - Nueva sintaxis Hyprland 0.51+
+gesture = 3, horizontal, workspace  # ✅ Gestos de 3 dedos horizontal para workspaces
 ```
+
+**⚠️ CAMBIO IMPORTANTE:** Hyprland 0.51 eliminó completamente las opciones `workspace_swipe*` del bloque `gestures`. Ahora usa la nueva sintaxis `gesture =`.
 
 ### 3. Autostart de libinput-gestures
 **Archivo:** `/config/hypr/hyprland.conf` (línea 224)
@@ -101,14 +102,21 @@ gesture swipe up 4 hyprctl dispatch overview:toggle
 gesture swipe down 4 hyprctl dispatch exec wofi --show drun
 ```
 
-### 2. Habilitar Gestos de Workspace en Hyprland
-**Cambio sugerido en hyprland.conf:**
+### 2. ⚠️ SINTAXIS OBSOLETA - NO USAR EN HYPRLAND 0.51+
+**❌ OBSOLETO (no funciona en 0.51+):**
 
 ```properties
 gestures {
-    workspace_swipe = on           # Cambiar de off a on
-    workspace_swipe_fingers = 3    # Usar 3 dedos
+    workspace_swipe = on           # ❌ ELIMINADO EN 0.51
+    workspace_swipe_fingers = 3    # ❌ ELIMINADO EN 0.51
 }
+```
+
+**✅ NUEVA SINTAXIS CORRECTA (0.51+):**
+
+```properties
+# Una sola línea reemplaza toda la configuración anterior
+gesture = 3, horizontal, workspace
 ```
 
 ### 3. Agregar Script de Configuración
